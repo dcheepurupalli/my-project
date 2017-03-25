@@ -1,0 +1,137 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+<link rel="import" href="..\..\bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="..\..\bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="..\..\bower_components/polymerfire/firebase.html">
+<link rel="import" href="..\..\bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="..\..\bower_components/polymerfire/firebase-query.html">
+
+<dom-module id="reported-vehicles">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div>Hello from <span>{{foo}}</span></div>
+
+    <iron-ajax
+      url="https://my-test-project-8fa62.firebaseio.com/vechiles.json"
+      handle-as="json"
+      on-response="_responseList"
+      loading="{{loading}}"
+      last-response="{{ajaxResponse}}"
+      debounce-duration="500"
+      auto>
+    </iron-ajax>
+
+    <firebase-app
+      auth-domain="my-test-project-8fa62.firebaseapp.com"
+      database-url="my-test-project-8fa62.firebaseio.com"
+      api-key="AIzaSyCLaIEdOfB8A0bIQX57jnRo15bXT1c0pdI">
+    </firebase-app>
+
+    <!--<firebase-app-->
+    <!--database-url="dinos-89701.firebaseio.com"-->
+    <!--api-key="AIzaSyDLkCy3RNC5uFomEjVsLUehpzKFDrfAplU"-->
+    <!--auth-domain="dinos-89701.firebaseio.com">-->
+    <!--</firebase-app>-->
+
+    <!--<firebase-query id="qry"-->
+    <!--path="/dinosaurs"-->
+    <!--data="{{dinosaurs}}">-->
+    <!--</firebase-query>-->
+    <firebase-query
+      id="query"
+      path="/vechiles"
+      data="{{data}}">
+    </firebase-query>
+
+
+    <template is="dom-repeat" items="[[data]]">
+      <div>[[item.vechileNumber]]</div>
+    </template>
+
+    <vaadin-grid demo>
+      <table>
+        <colgroup>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+        <tr>
+          <th>Vehicle Number</th>
+          <th>Vehicle Type</th>
+          <th>Pollution Level</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>KA03JC1793</td>
+          <td>BUS</td>
+          <td>Intolerable</td>
+        </tr>
+        <tr>
+          <td>KA03JC1793</td>
+          <td>Bike</td>
+          <td>High</td>
+        </tr>
+        </tbody>
+      </table>
+    </vaadin-grid>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'reported-vehicles',
+
+        properties: {
+          foo: {
+            type: String,
+            value: 'reported-vehicles',
+            notify: true
+          },
+          ajaxResponse: Object
+        },
+        _responseList: function (data) {
+
+          var vehicles = data.detail.response;
+//        vehicles.forEach(function (cl) {
+//            var dat = cl.val();
+//            console.log(dat);
+//        });
+        },
+        dataChanged: function (newData, oldData) {
+          // do something when the query returns values
+        }
+      });
+
+      // Initialize Firebase
+//    var config = {
+//      apiKey: "AIzaSyCLaIEdOfB8A0bIQX57jnRo15bXT1c0pdI",
+//      authDomain: "" +
+//      ".firebaseapp.com",
+//      databaseURL: "https://my-test-project-8fa62.firebaseio.com",
+//      storageBucket: "my-test-project-8fa62.appspot.com",
+//      messagingSenderId: "156486536807"
+//    };
+//    firebase.initializeApp(config);
+//    var query = firebase.database().ref("vechiles").orderByKey();
+//    console.log(query);
+
+    })();
+  </script>
+</dom-module>
