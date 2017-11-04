@@ -12,7 +12,11 @@
     "paper-input": "PolymerElements/paper-input#^1.1.23",
     "vaadin-combo-box": "^1.3.2",
     "vaadin-grid": "^1.2.1",
-    "polymerfire": "firebase/polymerfire#^0.10.3"
+    "polymerfire": "firebase/polymerfire#^0.10.3",
+    "paper-button": "PolymerElements/paper-button#^1.0.14",
+    "paper-styles": "PolymerElements/paper-styles#^1.2.0",
+    "iron-form": "PolymerElements/iron-form#^1.1.4",
+    "app-layout": "PolymerElements/app-layout#^0.10.7"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

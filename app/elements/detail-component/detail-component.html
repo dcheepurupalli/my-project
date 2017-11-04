@@ -11,11 +11,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="..\..\bower_components/polymer/polymer.html">
 <link rel="import" href="..\..\bower_components/paper-material/paper-material.html">
 <link rel="import" href="..\..\bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="..\..\bower_components/paper-button/paper-button.html">
+<link rel="import" href="..\..\bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="..\..\bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="..\..\bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="..\..\bower_components/paper-styles/paper-styles-classes.html">
 <link rel="import" href="..\..\bower_components/paper-item/paper-item.html">
 <link rel="import" href="..\..\bower_components/vaadin-combo-box/vaadin-combo-box.html">
 <link rel="import" href="..\..\bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="..\..\bower_components/iron-form/iron-form.html">
 <link rel="import" href="..\..\bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<link rel="import" href="..\..\bower_components/polymerfire/firebase.html">
+<link rel="import" href="..\..\bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="..\..\bower_components/polymerfire/firebase-query.html">
 
 <dom-module id="detail-component">
   <template>
@@ -26,37 +36,113 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="horizontal layout center-justified">
-      <div>
-        <custom-filter></custom-filter>
-      </div>
-      <div>
-        <paper-input-container>
-          <input is="iron-input" maxlength="2">
-          <paper-input-char-counter></paper-input-char-counter>
-        </paper-input-container>
-      </div>
-      <div>
-        <paper-input-container>
-          <input is="iron-input" maxlength="2">
-          <paper-input-char-counter></paper-input-char-counter>
-        </paper-input-container>
-      </div>
-      <div>
-        <paper-input-container>
-          <input is="iron-input" maxlength="2">
-          <paper-input-char-counter></paper-input-char-counter>
-        </paper-input-container>
-      </div>
+
+    <!--<firebase-query-->
+    <!--id="query"-->
+    <!--path="/vechiles"-->
+    <!--data="{{data}}">-->
+    <!--</firebase-query>-->
+
+    <!--<template is="dom-repeat" items="[[data]]">-->
+    <!--<div>[[item.vechileNumber]]</div>-->
+    <!--</template>-->
+
+
+    <div style="padding-top:30px; padding-bottom:30px">
+      <form is="iron-form" method="get" id="registerVehicles" action="/">
+        <div>
+          <iron-label>
+            Reporting User Details
+          </iron-label>
+        </div>
+
+        <div class="horizontal layout wrap center-justified">
+         <div class="flex" style="padding-right: 30px">
+           <paper-input always-float-label
+                        label="First Name"
+                        name="firstName">
+           </paper-input>
+         </div>
+          <div class="flex" style="padding-right: 30px">
+            <paper-input always-float-label
+                         label="Last Name"
+                         name="lastName">
+            </paper-input>
+          </div>
+          <div class="flex" style="padding-right: 30px">
+            <paper-input always-float-label
+                         label="Phone Number"
+                         name="phoneNumber">
+            </paper-input>
+          </div>
+        </div>
+        <div class="horizontal layout" style="padding-bottom: 40px">
+          <div class="flex">
+            <paper-input always-float-label
+                         label="Email"
+                         name="emailAddress">
+            </paper-input>
+          </div>
+          <div class="flex">
+
+          </div>
+        </div>
+
+        <div>
+          <iron-label>
+            Polluting Vehicle Details
+          </iron-label>
+        </div>
+        <div class="horizontal layout wrap">
+          <div class="flex" style="padding-right: 30px">
+            <paper-input always-float-label label="Registration State"
+                         placeholder="KA 03 JC" name="registeredState"></paper-input>
+          </div>
+          <div class="flex" style="padding-right: 30px">
+            <paper-input always-float-label label="Registration Number" char-counter="true" maxlength="4"
+                         placeholder="1234" name="registeredNumber"></paper-input>
+          </div>
+          <div class="flex-1">
+            <paper-dropdown-menu label="Level of Pollutions" name="pollutionLevel">
+              <paper-listbox class="dropdown-content" selected="0" >
+                <paper-item>Select</paper-item>
+                <paper-item>Unbearable</paper-item>
+                <paper-item>Heavy</paper-item>
+                <paper-item>Moderate</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+        </div>
+
+        <div class="horizontal layout wrap">
+          <div class="flex-1" style="padding-right: 30px">
+            <paper-input always-float-label label="Location"
+                         placeholder="Provide location" name="vechileLocation"></paper-input>
+          </div>
+          <div class="flex-1">
+            <paper-dropdown-menu label="Type of Vehicle" name="vehicleType">
+              <paper-listbox class="dropdown-content" selected="0" >
+                <paper-item>Select</paper-item>
+                <paper-item>PRIVATE BUS</paper-item>
+                <paper-item>RTC BUS</paper-item>
+                <paper-item>CAR</paper-item>
+                <paper-item>LORRY</paper-item>
+                <paper-item>AUTO</paper-item>
+                <paper-item>TWO WHEELER</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+        </div>
+
+
+        <div style="display: inline-block">
+          <button type="submit" class="indigo">
+            <paper-button raised>Submit</paper-button>
+          </button>
+        </div>
+      </form>
 
     </div>
-
-
-    <!--<iron-ajax url="https://my-test-project-8fa62.firebaseio.com/stateCodes.json" handle-as="json" last-response="{{response}}" loading="{{loading}}" debounce-duration="500" auto>-->
-    <!--</iron-ajax>-->
-
-    <!--<vaadin-combo-box filtered-items="[[response]]" filter="{{filter}}" loading="[[loading]]">-->
-    <!--</vaadin-combo-box>-->
 
   </template>
   <script>
@@ -66,14 +152,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       Polymer({
         is: 'detail-component',
 
+        listeners: {
+          'iron-form-submit': 'polymerForm'
+        },
         properties: {
           foo: {
             type: String,
             value: 'detail-component',
             notify: true
           }
+        },
+        polymerForm: function (event) {
+          var vehicleDetails = event.detail;
+          var vehicles = firebase.database().ref("vechiles/");
+          vehicles.push({
+            vechileNumber : vehicleDetails.registeredState + vehicleDetails.registeredNumber,
+            reportedByname : vehicleDetails.firstName,
+            vechileType : vehicleDetails.vehicleType,
+            vechilePollutionLevel : vehicleDetails.pollutionLevel
+          });
         }
+
       });
     })();
   </script>
+
 </dom-module>

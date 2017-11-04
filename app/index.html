@@ -114,33 +114,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Application name -->
         <div class="middle middle-container">
-          <div class="app-name">Reporting Tool for Polluting Vechiles</div>
+          <div class="app-name">Polluting Vehicles</div>
         </div>
 
         <!-- Application sub title -->
         <div class="bottom bottom-container">
-          <div class="bottom-title">The future of the web today</div>
+          <div class="bottom-title">Reporting Tool for Polluting Vehicles</div>
         </div>
       </paper-toolbar>
+
+
+      <firebase-app
+        auth-domain="my-test-project-8fa62.firebaseapp.com"
+        database-url="my-test-project-8fa62.firebaseio.com"
+        api-key="AIzaSyCLaIEdOfB8A0bIQX57jnRo15bXT1c0pdI">
+      </firebase-app>
 
       <!-- Main Content -->
       <div class="content">
         <iron-pages attr-for-selected="data-route" selected="{{route}}">
           <section data-route="home" tabindex="-1">
-            <paper-material elevation="1">
-              <my-greeting></my-greeting>
-
-              <p class="subhead">You now have:</p>
-              <my-list></my-list>
-
-              <p>Looking for more Web App layouts? Check out our <a
-                href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a
-                href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
-            </paper-material>
 
             <paper-material elevation="1">
               <detail-component></detail-component>
             </paper-material>
+
+
+            <!--<paper-material elevation="1">-->
+              <!--<my-greeting></my-greeting>-->
+
+              <!--<p class="subhead">You now have:</p>-->
+              <!--<my-list></my-list>-->
+
+              <!--<p>Looking for more Web App layouts? Check out our <a-->
+                <!--href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a-->
+                <!--href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>-->
+            <!--</paper-material>-->
+
+
 
           </section>
 

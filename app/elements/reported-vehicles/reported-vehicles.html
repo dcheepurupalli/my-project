@@ -11,8 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="..\..\bower_components/polymer/polymer.html">
 <link rel="import" href="..\..\bower_components/vaadin-grid/vaadin-grid.html">
 <link rel="import" href="..\..\bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="..\..\bower_components/polymerfire/firebase.html">
-<link rel="import" href="..\..\bower_components/polymerfire/firebase-app.html">
+
 <link rel="import" href="..\..\bower_components/polymerfire/firebase-query.html">
 
 <dom-module id="reported-vehicles">
@@ -22,8 +21,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
     </style>
-    <div>Hello from <span>{{foo}}</span></div>
-
     <iron-ajax
       url="https://my-test-project-8fa62.firebaseio.com/vechiles.json"
       handle-as="json"
@@ -34,32 +31,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       auto>
     </iron-ajax>
 
-    <firebase-app
-      auth-domain="my-test-project-8fa62.firebaseapp.com"
-      database-url="my-test-project-8fa62.firebaseio.com"
-      api-key="AIzaSyCLaIEdOfB8A0bIQX57jnRo15bXT1c0pdI">
-    </firebase-app>
-
-    <!--<firebase-app-->
-    <!--database-url="dinos-89701.firebaseio.com"-->
-    <!--api-key="AIzaSyDLkCy3RNC5uFomEjVsLUehpzKFDrfAplU"-->
-    <!--auth-domain="dinos-89701.firebaseio.com">-->
-    <!--</firebase-app>-->
-
-    <!--<firebase-query id="qry"-->
-    <!--path="/dinosaurs"-->
-    <!--data="{{dinosaurs}}">-->
-    <!--</firebase-query>-->
     <firebase-query
       id="query"
       path="/vechiles"
       data="{{data}}">
     </firebase-query>
-
-
-    <template is="dom-repeat" items="[[data]]">
-      <div>[[item.vechileNumber]]</div>
-    </template>
 
     <vaadin-grid demo>
       <table>
@@ -76,16 +52,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>KA03JC1793</td>
-          <td>BUS</td>
-          <td>Intolerable</td>
-        </tr>
-        <tr>
-          <td>KA03JC1793</td>
-          <td>Bike</td>
-          <td>High</td>
-        </tr>
+        <template is="dom-repeat" items="[[data]]">
+          <tr>
+            <td>[[item.vechileNumber]]</td>
+            <td>[[item.vechileType]]</td>
+            <td>[[item.vechilePollutionLevel]]</td>
+          </tr>
+        </template>
         </tbody>
       </table>
     </vaadin-grid>
