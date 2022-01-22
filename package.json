@@ -4,7 +4,7 @@
     "browser-sync": "2.27.7",
     "connect-history-api-fallback": "1.6.0",
     "del": "2.2.2",
-    "es6-promise": "3.3.1",
+    "es6-promise": "4.2.8",
     "glob-all": "3.2.1",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.1",
